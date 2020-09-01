@@ -1,9 +1,9 @@
 {
-  "name": "unfolder-app",
-  "productName": "unfolder-app",
+  "name": "elec-wp",
+  "productName": "elec-wp",
   "version": "1.0.0",
   "description": "My Electron application description",
-  "main": "src/index.js",
+  "main": ".webpack/main",
   "scripts": {
     "start": "electron-forge start",
     "package": "electron-forge package",
@@ -24,7 +24,7 @@
         {
           "name": "@electron-forge/maker-squirrel",
           "config": {
-            "name": "unfolder_app"
+            "name": "elec_wp"
           }
         },
         {
@@ -41,11 +41,26 @@
           "name": "@electron-forge/maker-rpm",
           "config": {}
         }
+      ],
+      "plugins": [
+        [
+          "@electron-forge/plugin-webpack",
+          {
+            "mainConfig": "./webpack.main.config.js",
+            "renderer": {
+              "config": "./webpack.renderer.config.js",
+              "entryPoints": [
+                {
+                  "html": "./src/index.html",
+                  "js": "./src/renderer.js",
+                  "name": "main_window"
+                }
+              ]
+            }
+          }
+        ]
       ]
     }
-  },
-  "dependencies": {
-    "electron-squirrel-startup": "^1.0.0"
   },
   "devDependencies": {
     "@electron-forge/cli": "6.0.0-beta.53",
@@ -53,6 +68,14 @@
     "@electron-forge/maker-rpm": "6.0.0-beta.53",
     "@electron-forge/maker-squirrel": "6.0.0-beta.53",
     "@electron-forge/maker-zip": "6.0.0-beta.53",
-    "electron": "10.1.1"
+    "@electron-forge/plugin-webpack": "6.0.0-beta.53",
+    "@marshallofsound/webpack-asset-relocator-loader": "^0.5.0",
+    "css-loader": "^4.2.1",
+    "electron": "10.1.1",
+    "node-loader": "^1.0.1",
+    "style-loader": "^1.2.1"
+  },
+  "dependencies": {
+    "electron-squirrel-startup": "^1.0.0"
   }
 }
