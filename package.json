@@ -1,0 +1,22 @@
+{
+  "name": "unfolder",
+  "version": "0.0.9",
+  "description": "Discover the Folder you want",
+  "main": "app.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/davidfitzgibbon/unFolder.git"
+  },
+  "author": "David Fitzgibbon",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/davidfitzgibbon/unFolder/issues"
+  },
+  "homepage": "https://github.com/davidfitzgibbon/unFolder#readme",
+  "devDependencies": {
+    "electron": "^10.1.1"
+  }
+}
